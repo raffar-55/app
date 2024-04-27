@@ -31,20 +31,21 @@ class PlayerController extends Controller
             'hasImage' => 'nullable|boolean',
             'sortBy' => 'nullable|in:youngToOld,lowToHigh,highToLow',
         ]);
-        // return $request->all();
+        //return $request->all();
         $f_q = $request->has('q') ? $request->q : null;
         $f_user = $request->has('user') ? $request->user : null;
         $f_country = $request->has('country') ? $request->country : null;
         $f_league = $request->has('league') ? $request->league : null;
         $f_leagueClub = $request->has('leagueClub') ? $request->leagueClub : null;
         $f_positions = $request->has('positions') ? $request->positions : [];
-        $f_experience = $request->has('experience') ? $request->experience : [];
+        $f_experiences = $request->has('experience') ? $request->experience : [];
         $f_minPrice = $request->has('minPrice') ? $request->minPrice : null;
         $f_maxPrice = $request->has('maxPrice') ? $request->maxPrice : null;
        // $f_credit = $request->has('credit') ? $request->credit : 0;
        // $f_exchange = $request->has('exchange') ? $request->exchange : 0;
         $f_hasImage = $request->has('hasImage') ? $request->hasImage : 0;
         $f_sortBy = $request->has('sortBy') ? $request->sortBy : null;
+
 
         $objs = Player::when(isset($f_q), function ($query) use ($f_q) {
             return $query->where(function ($query) use ($f_q) {
@@ -56,19 +57,19 @@ class PlayerController extends Controller
                 return $query->where('user_id', $f_user);
             })
             ->when(isset($f_country), function ($query) use ($f_country) {
-                return $query->where('location_id', $f_country);
+                return $query->where('country_id', $f_country);
             })
             ->when(isset($f_league), function ($query) use ($f_league) {
-                return $query->where('brand_id', $f_league);
+                return $query->where('league_id', $f_league);
             })
             ->when(isset($f_leagueClub), function ($query) use ($f_leagueClub) {
-                return $query->where('brand_model_id', $f_leagueClub);
+                return $query->where('league_club_id', $f_leagueClub);
             })
             ->when(count($f_positions) > 0, function ($query) use ($f_positions) {
-                return $query->whereIn('color_id', $f_positions);
+                return $query->whereIn('position_id', $f_positions);
             })
             ->when(count($f_experiences) > 0, function ($query) use ($f_experiences) {
-                return $query->whereIn('year_id', $f_experiences);
+                return $query->whereIn('experience_id', $f_experiences);
             })
             ->when(isset($f_minPrice), function ($query) use ($f_minPrice) {
                 return $query->where('price', '>=', $f_minPrice);
@@ -76,15 +77,7 @@ class PlayerController extends Controller
             ->when(isset($f_maxPrice), function ($query) use ($f_maxPrice) {
                 return $query->where('price', '<=', $f_maxPrice);
             })
-            //->when($f_credit, function ($query) {
-                return $query->where('credit', 1);
-            })
-            //->when($f_exchange, function ($query) {
-                return $query->where('exchange', 1);
-            })
-            ->when($f_hasImage, function ($query) {
-                return $query->whereNotNull('image');
-            })
+
             ->with('user', 'country', 'league', 'leagueClub', 'experience', 'position')
             ->when(isset($f_sortBy), function ($query) use ($f_sortBy) {
                 if ($f_sortBy == 'lowToHigh') {
@@ -103,17 +96,17 @@ class PlayerController extends Controller
         $users = User::withCount('players')
             ->orderBy('name')
             ->get();
-        $locations = Country::withCount('players')
+        $countries = Country::withCount('players')
             ->orderBy('name')
             ->get();
-        $brands = League::with('leagueClubs')
+        $leagues = League::with('leagueClubs')
             ->withCount('players')
             ->orderBy('name')
             ->get();
-        $colors = Position::withCount('players')
+        $positions = Position::withCount('players')
             ->orderBy('name')
             ->get();
-        $years = Experience::withCount('players')
+        $experiences = Experience::withCount('players')
             ->orderBy('name')
             ->get();
 
@@ -124,7 +117,7 @@ return view('player.index')
                 'users' => $users,
                 'countries' => $countries,
                 'leagues' => $leagues,
-                'positions' => $colors,
+                'positions' => $positions,
                 'experiences' => $experiences,
                 'f_q' => $f_q,
                 'f_user' => $f_user,

@@ -3,15 +3,15 @@
     All players
 @endsection
 @section('content')
-    <div class="container py-4">
-        <div class="row g-4">
-            <div class="col-md-4 col-xl-3">
+    <div class="container py-4 justify-content-star>
+        <div class=" row g-4 ">
+            <div class=" col-sm-8 col-md-6 col-xl-3">
                 @include('app.filter')
             </div>
             <div class="col">
-                <div class="row g-3">
+                <div class="row g-3 justify-content-end">
                     @forelse($objs as $obj)
-                        <div class="col-12">
+                        <div class="col-12 ">
                             @include('app.player')
                         </div>
                     @empty

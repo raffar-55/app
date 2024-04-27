@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Navbar">
     <div class="container-xl">
-        <a class="navbar-brand" href="{{ route('home') }}">App</a>
+        <a class="navbar-league" href="{{ route('home') }}">Sofascore</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -34,9 +34,9 @@ class Player extends Model
     }
 
 
-    public function brand()
+    public function league()
     {
-        return $this->belongsTo(Brand::class);
+        return $this->belongsTo(League::class);
     }
 
 

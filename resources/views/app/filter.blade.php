@@ -3,11 +3,11 @@
 
         <div class="mb-3">
             <label for="q" class="form-label fw-semibold">Search</label>
-            <input type="search" class="form-control" id="q" name="q" placeholder="2012 Toyota" value="{{ $f_q ?: '' }}" autofocus>
+            <input type="search" class="form-control" id="q" name="q" placeholder="" value="{{ $f_q ?: '' }}" autofocus>
         </div>
 
         <div class="mb-3">
-            <label for="user" class="form-label fw-semibold">User</label>
+            <label for="user" class="form-label fw-semibold">Player</label>
             <select class="form-select" id="user" name="user">
                 <option value>-</option>
                 @foreach($users as $user)
@@ -19,37 +19,37 @@
         </div>
 
         <div class="mb-3">
-            <label for="location" class="form-label fw-semibold">Location</label>
+            <label for="location" class="form-label fw-semibold">Country</label>
             <select class="form-select" id="location" name="location">
                 <option value>-</option>
-                @foreach($locations as $location)
-                    <option value="{{ $location->id }}" {{ $location->id == $f_location ? 'selected':'' }}>
-                        {{ $location->name }}
+                @foreach($countries as $country)
+                    <option value="{{ $country->id }}" {{ $country->id == $f_country ? 'selected':'' }}>
+                        {{ $country->name }}
                     </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="brand" class="form-label fw-semibold">Brand</label>
-            <select class="form-select" id="brand" name="brand">
+            <label for="league" class="form-label fw-semibold">League</label>
+            <select class="form-select" id="league" name="league">
                 <option value>-</option>
-                @foreach($brands as $brand)
-                    <option value="{{ $brand->id }}" {{ $brand->id == $f_brand ? 'selected':'' }}>
-                        {{ $brand->name }}
+                @foreach($leagues as $league)
+                    <option value="{{ $league->id }}" {{ $league->id == $f_league ? 'selected':'' }}>
+                        {{ $league->name }}
                     </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="brandModel" class="form-label fw-semibold">Brand Model</label>
-            <select class="form-select" id="brandModel" name="brandModel">
+            <label for="leagueClub" class="form-label fw-semibold">league Club</label>
+            <select class="form-select" id="leagueClub" name="leagueClub">
                 <option value>-</option>
-                @foreach($brands as $brand)
-                    @foreach($brand->brandModels as $brandModel)
-                        <option value="{{ $brandModel->id }}" {{ $brandModel->id == $f_brandModel ? 'selected':'' }}>
-                            {{ $brand->name }} / {{ $brandModel->name }}
+                @foreach($leagues as $league)
+                    @foreach($league->leagueClubs as $leagueClub)
+                        <option value="{{ $leagueClub->id }}" {{ $leagueClub->id == $f_leagueClub ? 'selected':'' }}>
+                            {{ $league->name }} / {{ $leagueClub->name }}
                         </option>
                     @endforeach
                 @endforeach
@@ -57,22 +57,22 @@
         </div>
 
         <div class="mb-3">
-            <label for="colors" class="form-label fw-semibold">Colors</label>
-            <select class="form-select" id="colors" name="colors[]" multiple size="3">
-                @foreach($colors as $color)
-                    <option value="{{ $color->id }}" {{ in_array($color->id, $f_colors) ? 'selected':'' }}>
-                        {{ $color->name }}
+            <label for="positions" class="form-label fw-semibold">Positions</label>
+            <select class="form-select" id="positions" name="positions[]" multiple size="3">
+                @foreach($positions as $position)
+                    <option value="{{ $position->id }}" {{ in_array($position->id, $f_positions) ? 'selected':'' }}>
+                        {{ $position->name }}
                     </option>
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
-            <label for="years" class="form-label fw-semibold">Years</label>
-            <select class="form-select" id="years" name="years[]" multiple size="3">
-                @foreach($years as $year)
-                    <option value="{{ $year->id }}" {{ in_array($year->id, $f_years) ? 'selected':'' }}>
-                        {{ $year->name }}
+            <label for="experiences" class="form-label fw-semibold">Professional</label>
+            <select class="form-select" id="experiences" name="experiences[]" multiple size="3">
+                @foreach($experiences as $experience)
+                    <option value="{{ $experience->id }}" {{ in_array($experience->id, $f_experiences) ? 'selected':'' }}>
+                        {{ $experience->name }}
                     </option>
                 @endforeach
             </select>
@@ -88,33 +88,12 @@
                 <input type="number" class="form-control" id="maxPrice" name="maxPrice" value="{{ $f_maxPrice ?: '' }}">
             </div>
         </div>
-
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="credit" name="credit" {{ $f_credit ? 'checked':'' }}>
-                <label class="form-check-label" for="credit">
-                    Credit
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="exchange" name="exchange" {{ $f_exchange ? 'checked':'' }}>
-                <label class="form-check-label" for="exchange">
-                    Exchange
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="hasImage" name="hasImage" {{ $f_hasImage ? 'checked':'' }}>
-                <label class="form-check-label" for="hasImage">
-                    Has Image
-                </label>
-            </div>
-        </div>
-
+     </div>
         <div class="mb-3">
             <label for="sortBy" class="form-label fw-semibold">Sort By</label>
             <select class="form-select" id="sortBy" name="sortBy">
                 <option value {{ 'youngToOld' == $f_sortBy ? 'selected':'' }}>
-                    New To Old
+                    Young To Old
                 </option>
                 <option value="lowToHigh" {{ 'lowToHigh' == $f_sortBy ? 'selected':'' }}>
                     Low To High
