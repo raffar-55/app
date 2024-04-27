@@ -1,7 +1,7 @@
 <div>
     <form action="{{ url()->current() }}" method="get">
 
-        <div class="mb-3">
+        <div class="mb-3 ">
             <label for="q" class="form-label fw-semibold">Search</label>
             <input type="search" class="form-control" id="q" name="q" placeholder="" value="{{ $f_q ?: '' }}" autofocus>
         </div>
