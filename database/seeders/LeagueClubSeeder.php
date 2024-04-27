@@ -16,7 +16,7 @@ class LeagueClubSeeder extends Seeder
     {
         $objs = [
             ['name' => 'Premier League', 'clubs' => [
-                'Avalon', 'Camry', 'Corolla', 'Highlander', 'Hilux',
+                'Manchester City', 'Camry', 'Corolla', 'Highlander', 'Hilux',
             ]],
             ['name' => 'Lexus', 'models' => [
                 'ES 350', 'RX 350',
