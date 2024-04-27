@@ -16,31 +16,31 @@ class LeagueClubSeeder extends Seeder
     {
         $objs = [
             ['name' => 'Premier League', 'clubs' => [
-                'Avalon', 'Camry', 'Corolla', 'Highlander', 'Hilux',
+                'Manchester City', 'Liverpool', 'Arsenal', 'MU', 'Chelsea',
             ]],
-            ['name' => 'Lexus', 'models' => [
-                'ES 350', 'RX 350',
+            ['name' => 'La Liga', 'clubs' => [
+                'Real Madrid', 'FCB', 'Athletic Madrid', 'Seville'
             ]],
-            ['name' => 'BMW', 'models' => [
-                'M5', 'X5', 'X6', 'X7',
+            ['name' => 'Seria A', 'clubs' => [
+                'Inter', 'Milan', 'Juve', 'Roma',
             ]],
-            ['name' => 'Mercedes-Benz', 'models' => [
-                'S-Class', 'CLS', 'E-Class', 'M-Class',
+            ['name' => 'Bundesliga', 'clubs' => [
+                'Bayern', 'Dortmund', 'Wolfsburg', 'Leverkusen',
             ]],
-            ['name' => 'Hyundai', 'models' => [
-                'Elantra', 'Santa Fe', 'Sonata', 'Tuscon',
+            ['name' => 'league 1', 'clubs' => [
+                'PSG', 'Monaco', 'Marsel', 'Lille',
             ]],
         ];
 
         foreach ($objs as $obj) {
-            $brand = League::create([
+            $league = League::create([
                 'name' => $obj['name'],
             ]);
 
-            foreach ($obj['models'] as $model) {
+            foreach ($obj['clubs'] as $club) {
                 LeagueClub::create([
-                    'brand_id' => $brand->id,
-                    'name' => $model,
+                    'league_id' => $league->id,
+                    'name' => $club,
                 ]);
             }
         }
