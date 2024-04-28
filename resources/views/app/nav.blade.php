@@ -8,8 +8,18 @@
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('players.index') }}">players</a>
+                    <a class="nav-link" href="{{ route('players.index') }}">Countries</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('players.index') }}">Leagues</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('players.index') }}">LeagueClubs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('players.index') }}">Players</a>
+                </li>
+
             </ul>
         </div>
     </div>
