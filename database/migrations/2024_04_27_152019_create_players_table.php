@@ -28,8 +28,6 @@ return new class extends Migration {
             $table->text('body');
             $table->string('image')->nullable();
             $table->double('price')->default(0);
-            // $table->boolean('credit')->default(0);
-            // $table->boolean('exchange')->default(0);
             $table->timestamps();
         });
     }

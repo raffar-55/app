@@ -26,8 +26,6 @@ class PlayerController extends Controller
             'experiences.*' => 'nullable|integer|min:1',
             'minPrice' => 'nullable|numeric|min:0',
             'maxPrice' => 'nullable|numeric|min:0',
-            // 'credit' => 'nullable|boolean',
-            //'exchange' => 'nullable|boolean',
             'hasImage' => 'nullable|boolean',
             'sortBy' => 'nullable|in:youngToOld,lowToHigh,highToLow',
         ]);
@@ -38,11 +36,9 @@ class PlayerController extends Controller
         $f_league = $request->has('league') ? $request->league : null;
         $f_leagueClub = $request->has('leagueClub') ? $request->leagueClub : null;
         $f_positions = $request->has('positions') ? $request->positions : [];
-        $f_experiences = $request->has('experience') ? $request->experience : [];
+        $f_experiences = $request->has('experience') ? $request->experiences : [];
         $f_minPrice = $request->has('minPrice') ? $request->minPrice : null;
         $f_maxPrice = $request->has('maxPrice') ? $request->maxPrice : null;
-       // $f_credit = $request->has('credit') ? $request->credit : 0;
-       // $f_exchange = $request->has('exchange') ? $request->exchange : 0;
         $f_hasImage = $request->has('hasImage') ? $request->hasImage : 0;
         $f_sortBy = $request->has('sortBy') ? $request->sortBy : null;
 
@@ -111,7 +107,7 @@ class PlayerController extends Controller
             ->get();
 
 
-return view('player.index')
+return view('players.index')
             ->with([
                 'objs' => $objs,
                 'users' => $users,
@@ -140,7 +136,7 @@ return view('player.index')
     {
         $obj = Player::findOrFail($id);
 
-        return view('player.show')
+        return view('players.show')
             ->with([
                 'obj' => $obj,
             ]);

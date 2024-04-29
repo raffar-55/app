@@ -19,8 +19,8 @@
         </div>
 
         <div class="mb-3">
-            <label for="location" class="form-label fw-semibold">Country</label>
-            <select class="form-select" id="location" name="location">
+            <label for="country" class="form-label fw-semibold">Country</label>
+            <select class="form-select" id="country" name="country">
                 <option value>-</option>
                 @foreach($countries as $country)
                     <option value="{{ $country->id }}" {{ $country->id == $f_country ? 'selected':'' }}>
