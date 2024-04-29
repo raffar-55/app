@@ -1,8 +1,8 @@
 <?php
 
 
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PlayerController;
-use App\Http\Controllers\PlayerControllerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +15,6 @@ Route::controller(PlayerController::class)
         Route::get('', 'index')->name('index');
         Route::get('/{id}', 'show')->name('show')->where('id', '[0-9]+');
     });
+
+
+

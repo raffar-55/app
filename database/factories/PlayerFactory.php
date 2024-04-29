@@ -38,8 +38,6 @@ class PlayerFactory extends Factory
             'title' => $experience->name . ' ' . $position->name . ' ' . $leagueClub->league->name . ' ' . $leagueClub->name,
             'body' => fake()->paragraph(rand(1, 3)),
             'price' => fake()->numberBetween(100, 500) * 1000,
-            // 'credit' => fake()->boolean(10),
-            //'exchange' => fake()->boolean(30),
             // 'created_at' => Carbon::parse($createdAt),
             // 'updated_at' => Carbon::parse($createdAt)->addDays(rand(0, 6))->addHours(rand(0, 23))->addMinutes(rand(0, 59)),
         ];

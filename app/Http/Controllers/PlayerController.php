@@ -124,8 +124,6 @@ return view('players.index')
                 'f_experiences' => $f_experiences,
                 'f_minPrice' => $f_minPrice,
                 'f_maxPrice' => $f_maxPrice,
-                //'f_credit' => $f_credit,
-                //'f_exchange' => $f_exchange,
                 'f_hasImage' => $f_hasImage,
                 'f_sortBy' => $f_sortBy,
             ]);
@@ -134,9 +132,9 @@ return view('players.index')
 
     public function show($id)
     {
-        $obj = Player::findOrFail($id);
+        $obj = Country::findOrFail($id);
 
-        return view('players.show')
+        return view('countries.show')
             ->with([
                 'obj' => $obj,
             ]);
